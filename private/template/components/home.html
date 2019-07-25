@@ -1,0 +1,70 @@
+<?php if($allow):?>
+<div class="page-wrapper">
+    <div class="page-container">
+        <div class="module-title">
+            Активні віджети
+        </div>
+        <div class='page-container-inner widgets'>
+            
+            <?php 
+            
+                get_widget("Сторінки", "pages", "name", "views", $db);
+                get_widget("Публікації", "posts", "name", "views", $db);
+                get_widget("Категорії", "categories", "name", "views", $db, "posts");
+                get_widget("Користувачі", "users", "varchar_param1", "views", $db, "posts");
+                
+            ?>
+
+        </div>
+        <br>
+        <div class="module-title">
+            Навігаційне меню
+        </div>
+        <div class='page-container-inner'>
+            <?php get_admin_items_list("menu","nav_menu_list_minified",$db,$pathes)?>
+        </div>
+
+    </div>
+    <div class="page-container">
+        <div class="module-title">
+            Інформація про шаблон
+        </div>
+        <div class="page-container-inner flex-hor">
+            <div class="template-info container">
+                <h4>Загальна інформація</h4>
+                <div class="block-content">
+                    <p>Назва шаблону: <span class='selected'><?=$template_info['name']?></span></p>
+                    <p>Автор: <span class='selected'><?=$template_info['author']?></span></p>
+                    <p>Тип: <span class='selected'><?=$template_info['type']?></span></p>
+                    <p>Версія: <span class='selected'><?=$template_info['ver']?></span></p>
+                    <br>
+                    <p>Адаптивність: <span class='selected'><?=$template_info['adaptive']?></span></p>
+                    <p>Кросбраузерність: <span class='selected'><?=$template_info['crossbrowser']?></span></p>
+                </div>
+            </div>
+            <div class="template-info container">
+                <h4>Технології</h4>
+                <div class="block-content">
+                    <p>HTML: <span class='selected'><?=$template_info['html']?></span></p>
+                    <br>
+                    <p>CSS: <span class='selected'><?=$template_info['css']?></span></p>
+                    <p>CSS Preprocessor: <span class='selected'><?=$template_info['css_preprocessor']?></span></p>
+                    <p>CSS Framework <span class='selected'><?=$template_info['css_framework']?></span></p>
+                    <br>
+                    <p>JS: <span class='selected'><?=$template_info['javascript']?></span></p>
+                    <p>JS Framework: <span class='selected'><?=$template_info['javascript_framework']?></span></p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="module-title">
+            Замітки
+        </div>
+        <div class='page-container-inner'>
+            <?php get_admin_items_list("admin_notes","note_list_minified",$db,$pathes)?>
+        </div>
+
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,22 @@
+User-agent: *
+Disallow: /admin
+
+User-agent: *
+Disallow: /config
+
+User-agent: *
+Disallow: /content
+
+User-agent: *
+Disallow: /lib
+
+User-agent: *
+Disallow: /modules
+
+User-agent: *
+Disallow: /performers
+
+User-agent: *
+Disallow: /private
+
+

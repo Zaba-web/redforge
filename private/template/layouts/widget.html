@@ -1,0 +1,10 @@
+<div class="widget-container container">
+    <h4><?=$widget->title?></h4>
+    <div class="block-content">
+        <p>Всього: <span class='selected'><?=$widget->count?></span></p>
+        <p>Остання: <span class='selected'><?=$widget->last?></span></p>
+        <?php if($widget->best>=-1):?>
+        <p>Найпопулярніша: <span class='selected'><?=$widget->best?></span></p>
+        <?php endif;?>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+<div class="hint container">
+    <p>Сторінка - це один з найважливіших елементів веб-сайту, що дозволяє користувачу взаємодіяти з інформацією. Система Red Forge дає можливість легко створювати та наповнювати сторінки завдяки текстовому процесору CKEditor, а наявність додаткових параметрів дає можливість гнучкого налаштування контенту сторінки.</p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити / оновити сторінку 
+        </div>
+        
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування сторінки <span class='edit-mode-diable'>[вимкнути]</span>
+                </p>
+            </div>
+            <form id="page-add-form" data-performer="pages" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="name" id="name" placeholder=" " class='required' autocomplete="off">
+                    <label for="name">Арткул сторінки(семантичний URL)</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="browser_title" id="browser_title" placeholder=" " class='required' autocomplete="off">
+                    <label for="browser_title">Заголовок сторінки в браузері</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="site_title" id="site_title" placeholder=" " class='required' autocomplete="off">
+                    <label for="site_title">Заголовок сторінки</label>
+                </div>
+                
+                <br><br>
+                
+                <h4>SEO інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="keywords" id="keywords" placeholder=" " class='required' autocomplete="off">
+                    <label for="keywords">Ключові слова</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="description" id="description" placeholder=" " class='required' autocomplete="off">
+                    <label for="description">Опис сторінки</label>
+                </div>
+                
+                <br><br>
+                
+                <h4>Додаткова інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param1" id="additional_param1" placeholder=" " autocomplete="off">
+                    <label for="additional_param1">Додатковий параметр 1</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param2" id="additional_param2" placeholder=" " autocomplete="off">
+                    <label for="additional_param2">Додатковий параметр 2</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param3" id="additional_param3" placeholder=" " autocomplete="off">
+                    <label for="additional_param3">Додатковий параметр 3</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="id" id="id">
+                </div>
+                <br><br>
+                
+                <h4>Контент</h4>
+                
+                <div class="form-element-wrapper">
+                    <textarea name="content"></textarea>
+                </div>
+                
+                <br> 
+                
+                    <div class="align-container">
+                        <button class="al-r submit" type="button"><span>Створити сторінку</span></button>
+                        <button class="al-r update" type="button"><span>Зберегти сторінку</span></button>
+                    </div>
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Список сторінок
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <h4>Пошук сторінок</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id='page_search' data-performer='pages' class='search' placeholder=" ">
+                <label for="page_search">Введіть артикул сторінки...</label>
+            </div>
+            
+            <br>
+            <br>
+            
+            <h4>Cторінки <span class='search-results-text'>- результати пошуку</span></h4>
+            
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>
+            
+            <br>
+            
+            <div class="all-selected">
+                
+                <?php get_admin_items_list("pages","page_list",$db,$pathes)?>
+
+                
+            </div>
+            <div class='find-container'>
+                <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>

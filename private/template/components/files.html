@@ -1,0 +1,40 @@
+<div class="hint container">
+    <p>
+        Використовуючи даний пункт меню ви можете завантажити на сайт різноманітні файли з метою подальшого їх використання. Завантажувати можна зображення, 
+документи MS Office, PDF, звукові файли, елементи, створені засобами FLASH. Максимальний розмір файлу залежить від конфігурації PHP на сервері.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Перелік файлів 
+        </div>
+        <div class="page-container-inner flex-hor file-wrapper limited-height" style='padding-bottom:15px;'>
+
+            <?php get_file_list("file_list");?>
+            
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Завантажити файл
+        </div>
+        <div class="page-container-inner container ">
+            
+            <p id='fileUploadErrors' class='label-text'></p>
+
+            <form id="myform" method="POST" enctype="multipart/form-data" >
+
+                <input type="file" name="myfile" id="myfile" multiple="multiple" accept="image/*,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.mdb,.mdbx,.pdf,.flash,audio/*" hidden><br>
+                <label for="myfile" class='pseudo-button'><span>Оберіть файл...</span></label>
+                <button type='submit'><span>Завантажити</span></button>
+
+            </form>
+            
+        </div>
+    </div>
+    
+</div>

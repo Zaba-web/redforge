@@ -1,0 +1,86 @@
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити замітку 
+        </div>
+        
+        <div class="page-container-inner container p-30">
+            <form id="page-add-form" data-performer="admin_notes" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " class='required' autocomplete="off">
+                    <label for="title">Заголовок</label>
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="date" class="date" id="date">
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="author" id="date" value="<?=$_SESSION['name']?>">
+                </div>
+                
+                <br><br>
+                
+                <h4>Текст замітки</h4>
+                
+                <div class="form-element-wrapper">
+                    <textarea name="content"></textarea>
+                </div>
+                
+                <br> 
+                
+                    <div class="align-container">
+                        <button class="al-r submit" type="button"><span>Створити замітку</span></button>
+                    </div>
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Список заміток
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <h4>Пошук заміток</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id='note_search' data-performer='notes' class='search' placeholder=" ">
+                <label for="note_search">Введіть заголовок замітки...</label>
+            </div>
+            
+            
+            <br>
+            <br>
+            
+            <h4>Замітки <span class='search-results-text'>- результати пошуку</span></h4>
+            
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>
+            
+            <br>
+            
+            <div class="all-selected">
+                
+                <?php get_admin_items_list("admin_notes","note_list",$db,$pathes)?>
+
+                
+            </div>
+            <div class='find-container'>
+                <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>

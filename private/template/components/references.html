@@ -1,0 +1,18 @@
+<div class="page-wrapper">
+
+    <div class="page-container">
+        <div class="module-title">
+            Довідкова інформація
+        </div>
+        <?php $ref = get_reference_data($_GET['id'],$db);?>
+        <div class="page-container-inner container p-30">
+            <h4><?=$ref['title']?></h4><p class="selected"><?=$ref['subject']?></p>
+                
+            <br>
+
+            <?=$ref['content']?>
+            
+        </div>
+    </div>
+    
+</div>

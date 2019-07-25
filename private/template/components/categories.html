@@ -1,0 +1,109 @@
+<div class="hint container">
+    <p>
+        У системі RED Forge категорія - це спеціальна динмічна веб сторінка, механізм, що дозволяє відокремлювати публікації за тематичними особливостями. Адміністратор може створити категорію у будь-який момент, тим самим розширивши список тем для створення публікацій. Співвідношення публікацій до категорії відображені у вигляді деревоподібної структури.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити / оновити категорію 
+        </div>
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування категорії <span class='edit-mode-diable'>[вимкнути]</span><br>
+                    <small>! зміна артикула категорії може привести до втрати зв'язків між публікаціями та категоріями</small>
+                </p>
+            </div>
+            <form id="categories" data-performer="categories" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="name" id="name" placeholder=" " autocomplete="off">
+                    <label for="name">Арткул категорії</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " autocomplete="off">
+                    <label for="title">Назва категорії</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="description" id="description" placeholder=" ">
+                    <label for="description">Опис категорії</label>
+                </div>
+                
+                <br><br>
+                
+                <h4>Додаткова інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param1" id="additional_param1" placeholder=" " autocomplete="off"> 
+                    <label for="additional_param1">Додатковий параметр 1</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param2" id="additional_param2" placeholder=" " autocomplete="off">
+                    <label for="additional_param2">Додатковий параметр 2</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param3" id="additional_param3" placeholder=" " autocomplete="off">
+                    <label for="additional_param3">Додатковий параметр 3</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="id" id="id" >
+                </div>
+                
+                <br>
+                
+                <div class="align-container">
+                    <button class="al-r submit" type="button"><span>Створити категорію</span></button>
+                    <button class="al-r update" type="button"><span>Зберегти категорію</span></button>
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Список категорій
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <h4>Пошук категорій</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id="cat_search" data-performer='categories' class='search' placeholder=" ">
+                <label for="cat_search">Введіть артикул категорії...</label>
+            </div>
+            
+            <br>
+            <br>
+            
+            <h4>Категорії <span class='search-results-text'>- результати пошуку</span></h4>
+            
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>
+            
+            <br>
+            
+            <div class="all-selected">
+                <?php get_admin_items_list("categories","category_list",$db,$pathes)?>
+                
+            </div>
+            <div class='find-container'>
+                <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+            </div>
+        </div>
+    </div>
+    
+</div>

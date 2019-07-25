@@ -1,0 +1,115 @@
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Написати повідомлення 
+        </div>
+        <div class="page-container-inner container p-30">
+            <form name="mails" data-performer="admin_mails" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="reciver" id="reciver" placeholder=" " autocomplete="off">
+                    <label for="revicer">Одержувач</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " autocomplete="off">
+                    <label for="title">Заголовок</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="subject" id="subject" placeholder=" " autocomplete="off">
+                    <label for="subject">Тема</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="sender" id="sender" value="<?=$_SESSION['name']?>">
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="hidden" class='date' name="date" id="date">
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="status" id="status" value='new'>
+                </div>
+                <br><br>
+                
+                <h4>Повідомлення</h4>
+                
+                <div class="form-element-wrapper">
+                    <textarea name="content"></textarea>
+                </div>
+                
+                
+                <br>
+                
+                <div class="align-container">
+                    <button class="al-r submit" type="button"><span>Надіслати лист</span></button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Вхідні повідомлення
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <div>
+                <h4>Нові повідомлення</h4><p class="show" data-status="hidden">[показати]</p>
+
+                <br>
+
+                <div class="new-messages container-hidden show-content">
+                    <?php 
+                        $reciver = $_SESSION['name'];
+                        get_admin_items_list("admin_mails WHERE reciver = '$reciver' AND status = 'new'","mail_list_recived",$db,$pathes);
+                    ?>
+                </div>
+            </div>
+            <br>
+            <div>
+                <h4>Прочитані повідомлення</h4><p class="show" data-status="hidden">[показати]</p>
+                <div class="old-messages container-hidden show-content">
+                    <?php 
+                        $reciver = $_SESSION['name'];
+                        get_admin_items_list("admin_mails WHERE reciver = '$reciver' AND status = 'seen'","mail_list_recived",$db,$pathes);
+                    ?>
+                </div>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div class="module-title">
+            Вихідні повідомлення
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <div>
+                <h4>Непрочитані повідомлення</h4><p class="show" data-status="hidden">[показати]</p>
+
+                <br>
+
+                <div class="new-messages container-hidden show-content">
+                    <?php
+                        $sender = $_SESSION['name'];
+                        get_admin_items_list("admin_mails WHERE sender = '$sender' AND status = 'new'","mail_list_recived",$db,$pathes);
+                    ?>
+                </div>
+            </div>
+            <br>
+            <div>
+                <h4>Прочитані повідомлення</h4><p class="show" data-status="hidden">[показати]</p>
+                <div class="old-messages container-hidden show-content">
+                    <?php 
+                        $sender = $_SESSION['name'];
+                        get_admin_items_list("admin_mails WHERE sender = '$sender' AND status = 'seen'","mail_list_recived",$db,$pathes);
+                    ?>
+                </div>
+                <br>
+            </div>
+
+        </div>
+    </div>
+    
+</div>

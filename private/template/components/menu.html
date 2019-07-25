@@ -1,0 +1,67 @@
+<div class="hint container">
+    <p>
+        Меню - важливий елемент сайту, який дозволяє здійснювати навігацію.У склад системи RED Forge вбудовано стандартний модуль, що дозволяє створювати 
+однорівневі навігаційні меню для сайту.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити / оновити пункт меню 
+        </div>
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування пункту меню <span class='edit-mode-diable'>[вимкнути]</span><br>
+                </p>
+            </div>
+            <form name="menu" data-performer="menu" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " autocomplete="off">
+                    <label for="title">Назва пункту меню</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="href" id="href" placeholder=" " autocomplete="off">
+                    <label for="href">Посилання</label>
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="id" id="id" >
+                </div>
+                
+                <br>
+                
+                <div class="align-container">
+                    <button class="al-r submit" type="button"><span>Створити пункт меню</span></button>
+                    <button class="al-r update" type="button"><span>Зберегти пункт меню</span></button>
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Пункти меню
+        </div>
+        <div class="page-container-inner container p-30">
+            <h4>Меню</h4>
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>    
+            <br>
+            <?php get_admin_items_list("menu","nav_menu_list",$db,$pathes)?>
+            
+        </div>
+    </div>
+    
+</div>

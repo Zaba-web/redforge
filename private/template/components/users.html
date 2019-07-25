@@ -1,0 +1,39 @@
+<div class="hint container">
+    <p>
+        До списку користувачів відносяться всі зареєстровані люди на сайті. Процедура реєстрації дозволяє розмежовувати постійних та одноразових відвідуваічів, 
+призначати тих чи інших людей на керівничі посади, регулювати доступ до розділів сайту, тощо.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container">
+        <div class="module-title">
+            Список користувачів
+        </div>
+        <div class="page-container-inner container p-30">
+            <h4>Пошук користувачів</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id="user_search" class='search' data-performer='users' placeholder=" ">
+                <label for="user_search">Введіть логін користувача...</label>
+            </div>
+            
+            <br>
+            <br>
+            
+            <h4>Всі користувачі</h4>
+                
+            <br>
+            <div class="all-selected">
+                <?php get_admin_items_list("users","user_list",$db,$pathes)?>
+            </div>
+            <div class='find-container'>
+                <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,102 @@
+<?php if($allow): ?>
+<!doctype html>
+<html>
+    <head>
+        <title>RED Forge</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="<?=$pathes->client_path?>private/template/assets/styles/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+        <script src="<?=$pathes->client_path?>private/template/assets/scripts/rf_admin_lib.js"></script>
+        <script src="<?=$pathes->client_path?>private/template/assets/scripts/main.js"></script>
+        <script src="<?=$pathes->client_path?>private/template/assets/scripts/events.js"></script>
+        <script src="<?=$pathes->client_path?>private/template/assets/scripts/upload.js"></script>
+        <script src="https://cdn.ckeditor.com/4.11.4/full-all/ckeditor.js"></script>
+    </head>
+    <body>
+        <div class="notification-container">
+            <div class="notification-text">
+                <p class="notification-text-inner"></p>
+            </div>
+            <div class="notification-progress-bar"></div>
+        </div>
+        <div class="wrapper-main">
+            
+            <div class="container-menu">
+                <div class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M0,25.8v17.2h172v-17.2zM0,77.4v17.2h172v-17.2zM0,129v17.2h172v-17.2z"></path></g></g></g></svg>
+                </div>
+                <div class="container-logo">
+                    <img src="<?=$pathes->client_path?>private/template/assets/images/logo.svg" alt="" class="logo-image">
+                    <h1><span class="logo-text-accent">red</span>forge</h1>
+                </div>
+                <div class="menu-line"></div>
+                <nav>
+                    <ul>
+                        <?php get_item_list($db->query("SELECT * FROM admin_menu WHERE type = 'system' AND visibility = 1"), "private/template/layouts/admin_menu.html", true); ?>
+                    </ul>
+                    <div class="menu-line"></div>
+                    <ul>
+                        <?=get_admin_menu_modules_list($db); ?>
+                    </ul>
+                    <div class="menu-line"></div>
+                    <ul>
+                        <?=get_dev_menu_list($db); ?>
+                    </ul>    
+                </nav>
+            </div>
+            
+            <div class="container-workspace">
+                <header class="container">
+                    <div class="header-section" id="access-level"><p>Ваш рівень доступу: <?=$permission_settings[$_SESSION['access']]?></p></div>
+                    <div class="header-section header-search-container">
+                        <input type="text" style="width:100%" id="main-search" placeholder=" ">
+                        <label for="main-search">Введіть пошуковий запит...</label>
+                        <div class="header-search-container-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="23" height="23" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#c1bfbf"><g id="surface1"><path d="M72.24,10.32c-32.33062,0 -58.48,26.14938 -58.48,58.48c0,32.33063 26.14938,58.48 58.48,58.48c11.54281,0 22.22563,-3.38625 31.2825,-9.1375l42.2475,42.2475l14.62,-14.62l-41.71,-41.6025c7.49813,-9.83625 12.04,-22.02406 12.04,-35.3675c0,-32.33062 -26.14937,-58.48 -58.48,-58.48zM72.24,24.08c24.76531,0 44.72,19.95469 44.72,44.72c0,24.76531 -19.95469,44.72 -44.72,44.72c-24.76531,0 -44.72,-19.95469 -44.72,-44.72c0,-24.76531 19.95469,-44.72 44.72,-44.72z"></path></g></g></g></svg>
+                        </div>
+                        
+                        <div class="header-serach-results container container-hidden">
+                            
+                        </div>
+                    </div>
+                    <div class="header-section">
+                        <div class='user-ifno'>
+                            <div class="user-avatar" style="background:url(<?=$_SESSION['avatar']?>);background-size:cover;background-position:center;background-color:black;"></div>
+                            <p class='user-name'><?=$_SESSION['name']?></p>
+                        </div>
+                    </div>
+                    <div class="header-section">
+                        <div class="meta-info">
+                            <span>
+                                <a href="<?=$patehs->client_path?>/admin/notes">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#d9d9d9"><path d="M13.76,13.76v144.48h108.06437l36.41563,-36.41563v-1.42437v-106.64zM20.64,20.64h130.72v96.32h-34.4v34.4h-96.32zM48.16,51.6v6.88h79.12v-6.88zM48.16,72.24v6.88h79.12v-6.88zM48.16,92.88v6.88h79.12v-6.88zM123.84,123.84h22.65563l-22.65563,22.65563z"></path></g></g></svg>                                
+                                </a>    
+                            </span>
+                            <span>
+                                <a href="<?=$patehs->client_path?>/admin/mails">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#d9d9d9"><path d="M0,24.08v3.44v120.4h172v-123.84zM6.88,30.96h158.24v8.62015c-1.45955,1.27213 -62.56052,54.52441 -67.64437,58.95031c-4.46219,3.88469 -9.00804,4.67625 -11.47563,4.67625c-2.46513,0 -7.01279,-0.79099 -11.47563,-4.67625c-5.08386,-4.42591 -66.18483,-57.67818 -67.64437,-58.95031zM6.88,48.67735c8.38663,7.31058 58.36871,50.88289 63.1361,55.03328c5.85028,5.09314 12.04375,6.36265 15.9839,6.36265c3.93769,0 10.13297,-1.26894 15.9839,-6.36265c4.76737,-4.15038 54.74912,-47.71657 63.1361,-55.02656v92.35594h-158.24z"></path></g></g></svg>
+                                </a>    
+                            </span>
+                            <span>
+                                <a href="<?=$patehs->client_path?>/performers/user_perform.php?exit=yes">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#d9d9d9"><g id="surface1"><path d="M26.875,10.75c-8.86035,0 -16.125,7.26465 -16.125,16.125v107.5c0,8.86035 7.26465,16.125 16.125,16.125h107.5c8.86035,0 16.125,-7.26465 16.125,-16.125v-26.875l-10.75,10.75v16.125c0,3.02344 -2.35156,5.375 -5.375,5.375h-107.5c-3.02344,0 -5.375,-2.35156 -5.375,-5.375v-107.5c0,-3.02344 2.35156,-5.375 5.375,-5.375h107.5c3.02344,0 5.375,2.35156 5.375,5.375v16.125l10.75,10.75v-26.875c0,-8.86035 -7.26465,-16.125 -16.125,-16.125zM115.35254,43.25196l-7.64258,7.55859l24.43946,24.43945h-78.39942v10.75h78.39942l-24.43946,24.39746l7.64258,7.64258l37.37304,-37.41504z"></path></g></g></g></svg>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+                    <?php include load_partition($selected,$error,$pathes);?>
+            </div>
+            
+        </div>
+    </body>
+</html>
+<?endif;?>
+

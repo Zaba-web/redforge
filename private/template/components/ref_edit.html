@@ -1,0 +1,100 @@
+<?php if(check_is_developer($_SESSION['id'],$db)):?>
+
+<div class="hint container">
+    <p>
+        Адміністратори, які мають статус розробника можуть вносити зміни у системний довідник, що дозволяє розширювати обсяг інформації про функціонал та внутрішнє влаштування системи RED Forge.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити / оновити запис 
+        </div>
+        
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування <span class='edit-mode-diable'>[вимкнути]</span>
+                </p>
+            </div>
+            <form id="page-add-form" data-performer="admin_references" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " class='required' autocomplete="off">
+                    <label for="title">Заголовок</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="subject" id="subject" placeholder=" " class='required' autocomplete="off">
+                    <label for="subject">Тема</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="id" id="id">
+                </div>
+                
+                <br><br>
+                
+                <h4>Контент</h4>
+                
+                <div class="form-element-wrapper">
+                    <textarea name="content"></textarea>
+                </div>
+                
+                <br> 
+                
+                    <div class="align-container">
+                        <button class="al-r submit" type="button"><span>Створити запис</span></button>
+                        <button class="al-r update" type="button"><span>Зберегти запис</span></button>
+                    </div>
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Список записів у довідці
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <h4>Пошук записів у довідці</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id='page_search' data-performer='admin_references' class='search' placeholder=" ">
+                <label for="page_search">Введіть заголовок...</label>
+            </div>
+            
+            <br>
+            <br>
+            
+            <h4>Довідкові записи <span class='search-results-text'>- результати пошуку</span></h4>
+            
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>
+            
+            <br>
+            
+            <div class="all-selected">
+                
+                <?php get_admin_items_list("admin_references","reference_list",$db,$pathes)?>
+
+                
+            </div>
+            <div class='find-container'>
+                <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+<?php endif;?>

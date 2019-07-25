@@ -1,0 +1,135 @@
+<div class="hint container">
+    <p>
+        В системі RED Forge публікація - це одиниця інформації, яка стосується одної з провідних тематик сайту та належить до певної категорії.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити / оновити публікацію 
+        </div>
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування публікації <span class='edit-mode-diable'>[вимкнути]</span>
+                </p>
+            </div>
+            <form name="posts" data-performer="posts" data-key="C"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="name" id="name" placeholder=" " autocomplete="off">
+                    <label for="name">Арткул публікації(семантичний URL)</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " autocomplete="off">
+                    <label for="title">Заголовок публікації</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <select name="parent">
+                        <option disabled selected>Категорія</option>
+                        <?php get_item_list($db->query("SELECT * FROM categories"),"private/template/layouts/category_select_list.html",true) ?>
+                    </select>
+                </div>
+                
+                <br><br>
+                
+                <h4>SEO інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="keywords" id="keywords" placeholder=" " autocomplete="off">
+                    <label for="keywords">Ключові слова</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="description" id="description" placeholder=" " autocomplete="off">
+                    <label for="description">Опис публікації</label>
+                </div>
+                
+                <br><br>
+                
+                <h4>Додаткова інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param1" id="additional_param1" placeholder=" " autocomplete="off">
+                    <label for="additional_param1">Додатковий параметр 1</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param2" id="additional_param2" placeholder=" " autocomplete="off">
+                    <label for="additional_param2">Додатковий параметр 2</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="additional_param3" id="additional_param3" placeholder=" " autocomplete="off">
+                    <label for="additional_param3">Додатковий параметр 3</label>
+                </div>
+                
+                <br><br>
+                
+                <h4>Контент</h4>
+                
+                <div class="form-element-wrapper">
+                    <textarea name="content"></textarea>
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="id" id="id" >
+                </div>
+                
+                <br>
+                
+                <div class="align-container">
+                    <button class="al-r submit" type="button"><span>Створити публікацію</span></button>
+                    <button class="al-r update" type="button"><span>Зберегти публікацію</span></button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Список публікацій
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <h4>Пошук публікацій</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id="page_search" class='search' data-performer='posts' placeholder=" ">
+                <label for="page_search">Введіть артикул публікації...</label>
+            </div>
+            
+            <br>
+            <br>
+            
+            <h4>Всі публікації</h4>
+             
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>
+            
+            <br>
+            
+            <div class="page-info-wrapper">
+                <div class="all-selected">
+                    <?php get_admin_items_list("posts","post_list",$db,$pathes)?>
+                </div>
+                <div class='find-container'>
+                    <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
