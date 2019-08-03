@@ -36,7 +36,7 @@
             
                 $keys = get_array_keys($data_parsed);
                 $values = get_array_values_to_insert($data_parsed,$db);
-
+				
                 if($query_builder->insert($performer,$keys,$values)){
                     echo "Операцію успішно виконано";
                 }else{

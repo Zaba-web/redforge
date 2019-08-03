@@ -69,7 +69,6 @@
     
     function get_array_values_to_insert($array, $db){
         foreach($array as $key => $value){
-            $array[$key] = addslashes($array[$key]);
             $array[$key] = $db->real_escape_string($array[$key]);
             $array[$key] = "'".$array[$key]."'";
         }
