@@ -1,0 +1,114 @@
+<?php if(check_is_developer($_SESSION['id'],$db)):?>
+<div class="hint container">
+    <p>
+        Будь який контроллер або модуль, який передбачає введення інформації адміністратором повинен мати свій розділ в панелі керування. Розділи бувають кількох типів і виводяться в меню відповідно до рівня доступу адміністратора.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Створити / оновити розділ 
+        </div>
+        
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування розділу <span class='edit-mode-diable'>[вимкнути]</span>
+                </p>
+            </div>
+            <form id="page-add-form" data-performer="admin_menu" data-key="C"> 
+
+                <h4>Загальна інформація</h4>
+
+                <div class="form-element-wrapper">
+                    <input type="text" name="name" id="name" placeholder=" " autocomplete="off">
+                    <label for="name">Арткул розділу</label>
+                </div>
+
+                <div class="form-element-wrapper">
+                    <input type="text" name="title" id="title" placeholder=" " autocomplete="off">
+                    <label for="title">Заголовок розділу</label>
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <select name="type" id="type">
+                        <option selected disabled>Тип розділу</option>
+                        <option value="system">Системний</option>
+                        <option value="custom">Додатковий</option>
+                        <option value="dev">Для розробників</option>
+                    </select>
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <select name="visibility" id="visibility">
+                        <option selected disabled>Видимість розділу</option>
+                        <option value="1">Відображати</option>
+                        <option value="0">Не відображати</option>
+                    </select>
+                </div>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="icon" id="icon" placeholder=" " autocomplete="off">
+                    <label for="icon">Іконка (svg, 28x28)</label>
+                </div>
+
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="hidden" name="id" id="id">
+                </div>
+                
+                <div class="align-container">
+                    <button class="al-r submit" type="button"><span>Створити розділ</span></button>
+                    <button class="al-r update" type="button"><span>Зберегти розділ</span></button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+    <div class="page-container">
+        <div class="module-title">
+            Список розділів
+        </div>
+        <div class="page-container-inner container p-30 limited-height">
+            <h4>Пошук розділів</h4>
+                
+            <br>
+
+            <div class="form-element-wrapper">
+                <input type="text" id='page_search' data-performer='admin_menu' class='search' placeholder=" ">
+                <label for="page_search">Введіть назву розділу...</label>
+            </div>
+            
+            <br>
+            <br>
+            
+            <h4>Розділи <span class='search-results-text'>- результати пошуку</span></h4>
+            
+            <div class="update-informer-wrapper">
+                <div class="update-informer-container">
+                    <p>Перезавантажте сторінку для оновлення списку</p>
+                </div>
+            </div>
+           
+            
+            <br>
+            
+            <div class="all-selected">
+                
+                <?php get_admin_items_list("admin_menu","admin_menu_list",$db,$pathes)?>
+
+                
+            </div>
+            <div class='find-container'>
+                <p class='search-not-finded'>За вашим запитом нічого не знайдено</p>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+<?php endif;?>
