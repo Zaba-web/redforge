@@ -25,7 +25,14 @@
         foreach($data_couple as $data_item){
             
             $data_item_parsed = explode("=",$data_item);
-            $data_parsed[$data_item_parsed[0]] = $data_item_parsed[1];
+            if(count($data_item_parsed) == 2){
+                $data_parsed[$data_item_parsed[0]] = $data_item_parsed[1]; // for common text
+            }else{ // if array item contains '=' mark
+                $data_key = $data_item_parsed[0];
+                unset ($data_item_parsed[0]);
+                $data_value = implode("=", $data_item_parsed);
+                $data_parsed[$data_key] = $data_value;
+            }
             
         }
         
