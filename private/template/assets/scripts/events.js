@@ -144,4 +144,21 @@ $(document).ready(function(){
         
     });
     
+    $("#create-dir").on("click", function () {
+        fileQuery("C-D",$("#dir_name").val(),"set");
+    });
+    
+    $("body").on("click",".delete-file", function () {
+        fileQuery("D-F",$(this).data("name"),"set");
+        $(this).parent().parent().fadeOut(300);
+    });
+    
+    $(".modal-close").on("click", function () {
+        closeModal();
+    });
+    
+    $(".show-dir").on("click", function () {
+        fileQuery("G-D",$(this).data("path"),"get",fileListInDir);
+    });
+    
 });
