@@ -12,6 +12,7 @@ $(document).ready(
                     message.text('Потрібно обрати файли');
                     return false;
                 }
+
                 $.ajax({
                     type: "POST",
                     url: CLIENT_URL + "/private/performers/file_performer.php",

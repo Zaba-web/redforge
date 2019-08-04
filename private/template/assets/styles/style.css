@@ -531,6 +531,9 @@ select.invise{
     padding:20px;
     border-bottom:1px solid #EBEBEB;
 }
+.search_item:last-child{
+    border:0;
+}
 .reset p{
     color:#FEBEC7;
 }
@@ -539,11 +542,50 @@ select.invise{
     border:0;
     
 }
-
-
-
-
-
+.file-controlls{
+    position:absolute;
+    right:10px;
+    top:10px;
+    cursor: pointer;
+}
+.modal-wrapper{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(232, 97, 116, .7);;
+    z-index:9999;
+    justify-content: center;
+    align-items: center;
+    display:none;
+}
+.modal-container{
+    background:#fff;
+    min-width:100px;
+    min-height:30px;
+    padding:35px 20px;
+    box-sizing:border-box;
+    box-shadow:         2px 2px 13px 0px rgba(50, 50, 50, 0.09);
+    position:relative;
+}
+.modal-close{
+    position:absolute;
+    right:10px;
+    top:10px;
+    cursor: pointer;
+}
+.file-item-mini{
+    min-height:25px;
+    height:auto;
+    border-bottom:1px solid #EBEBEB;
+    padding:10px 0px;
+    padding-right:48px;
+    position: relative;
+}
+.file-item-mini:last-child{
+    border:0;
+}
 
 
 
