@@ -47,7 +47,7 @@
                 
                 if($value == ""){$row[$key] = "-";}
                 
-                $response = $response.$key."≈".$value."╬";
+                $response = $response."≈".$value."╬";
                 
         }
         
@@ -106,7 +106,7 @@
         }
     }
     
-    function get_file_list($layout){
+    function get_file_list($layout,$type){
         $pathes = new PathConfig();
         $dir = $pathes->server_path."content/";
         $file_list = scandir($dir);
@@ -116,16 +116,27 @@
         
         $item_info = array();
         
+        $statement;
+        
         foreach($file_list as $file){
-            if(strlen($file)>20){
-                $file_short = mb_strimwidth($file,0,20,"...");
-            }else{
-                $file_short = $file;
+            
+            if($type=="file"){
+                $statement = !is_dir($pathes->server_path."content/".$file);
+            }else if($type == "dir"){
+                $statement = is_dir($pathes->server_path."content/".$file);
             }
-            $item_info["name"] = $file;
-            $item_info["name_short"] = $file_short;
-            $item_info["size"] = round(filesize($dir.$file)/1048576,4);
-            include $pathes->server_path."private/template/layouts/".$layout.".html";
+            
+            if($statement){
+                if(strlen($file)>20){
+                    $file_short = mb_strimwidth($file,0,20,"...");
+                }else{
+                    $file_short = $file;
+                }
+                $item_info["name"] = $file;
+                $item_info["name_short"] = $file_short;
+                $item_info["size"] = round(filesize($dir.$file)/1048576,3);
+                include $pathes->server_path."private/template/layouts/".$layout.".html";
+            }
         }
     }
     
