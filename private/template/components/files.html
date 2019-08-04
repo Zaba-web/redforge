@@ -11,9 +11,22 @@
         <div class="module-title">
             Файловий менеджер 
         </div>
+        
+        <br><br>
+        
+        <h4>Список директорій</h4>
         <div class="page-container-inner flex-hor file-wrapper limited-height" style='padding-bottom:15px;'>
-
-            <?php get_file_list("file_list");?>
+            
+            <?php get_file_list("file_list","dir");?>
+            
+        </div>
+        
+        <br><br>
+        
+        <h4>Список файлів</h4>
+        <div class="page-container-inner flex-hor file-wrapper limited-height" style='padding-bottom:15px;'>
+            
+            <?php get_file_list("file_list","file");?>
             
         </div>
     </div>
@@ -33,6 +46,18 @@
                 <label for="myfile" class='pseudo-button'><span>Оберіть файл...</span></label>
                 <button type='submit'><span>Завантажити</span></button>
 
+            </form>
+            <br>
+            <h4>Директорії</h4>
+            <form>
+                
+                 <div class="form-element-wrapper">
+                    <input type="text" name="dir_name" id="dir_name" placeholder=" " autocomplete="off">
+                    <label for="dir_name">Назва директорії</label>
+                </div>
+                <br>
+                <button type='button' id="create-dir"><span>Створити директорію</span></button>
+                                
             </form>
             
         </div>
