@@ -47,7 +47,7 @@
                 
                 if($value == ""){$row[$key] = "-";}
                 
-                $response = $response."≈".$value."╬";
+                $response = $response.$key."≈".$value."╬";
                 
         }
         
