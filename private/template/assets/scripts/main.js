@@ -31,7 +31,11 @@ $(document).ready(function(){
     
     
     if($('textarea').is("[name='content']")){
-        var content = CKEDITOR.replace("content");
+        
+        var content = CKEDITOR.replace("content", {
+            filebrowserUploadUrl:CLIENT_URL+"private/performers/cke_upload.php",
+            filebrowserUploadMethod : "form"
+        });
     }
     
    
