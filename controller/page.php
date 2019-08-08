@@ -13,7 +13,6 @@
        
        $db->query("UPDATE pages SET views = '$views' WHERE name = '$page'");
        
-       require_once $pathes->server_path."modules/test/test.php";
        
        require_once $pathes->server_path."template/composition/single_page.html";
        

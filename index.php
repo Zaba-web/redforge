@@ -17,6 +17,8 @@
     
     require_once $pathes->server_path."config/modules_cfg.php";
     
+    require_once $pathes->server_path."modules/advanced_menu/advanced_menu.php";
+    
     $url = $_GET['url'];
     
     $rс = new Router($url, $routes);
