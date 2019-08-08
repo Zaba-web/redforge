@@ -1,0 +1,55 @@
+<?php $site_info = get_site_info($db);?>
+<div class="hint container">
+    <p>
+        Даний розділ призначено для задання типової інофрмації про сайт, якої як назва, опис, логотип, тощо.
+    </p>
+</div>
+
+<div class="page-wrapper">
+
+    <div class="page-container m-r-30">
+        <div class="module-title">
+            Оновити інформацію про сайт
+        </div>
+        <div class="page-container-inner container p-30">
+            <div class='mode-informer'>
+                <p>
+                    Режим редагування категорії <span class='edit-mode-diable'>[вимкнути]</span><br>
+                    <small>! зміна артикула категорії може привести до втрати зв'язків між публікаціями та категоріями</small>
+                </p>
+            </div>
+            <form id="categories" data-performer="site_info" data-key="U"> 
+                <h4>Загальная інформація</h4>
+                
+                <br>
+                
+                <div class="form-element-wrapper">
+                    <input type="text" name="site_name" id="site_name" placeholder=" " autocomplete="off" value="<?=$site_info['site_name']?>">
+                    <label for="site_name">Назва сайту</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="site_logo" id="site_logo" placeholder=" " autocomplete="off" value="<?=$site_info['site_logo']?>">
+                    <label for="site_logo">Логотип</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="site_description" id="site_description" placeholder=" " value="<?=$site_info['site_description']?>">
+                    <label for="site_description">Опис сайту</label>
+                </div>
+                <div class="form-element-wrapper">
+                    <input type="text" name="site_tagline" id="site_tagline" placeholder=" " value="<?=$site_info['site_tagline']?>">
+                    <label for="site_tagline">Девіз сайту</label>
+                </div>
+                <br><br>
+                <input type="hidden" name='id' value='0'>
+                
+                <div class="align-container">
+                    <button class="al-r update" type="button" style="display:inline-block"><span>Зберегти інформацію</span></button>
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+    
+    
+</div>
