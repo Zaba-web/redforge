@@ -241,3 +241,9 @@
         include $pathes->server_path."private/template/layouts/widget.html";;
         unset($widget);
     }
+    
+    function get_site_info($db){
+        $qbuilder = new QueryBuilder($db);
+        $result = $qbuilder->select("site_info");
+        return $result->fetch_assoc();
+    }
