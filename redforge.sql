@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 08 2019 г., 21:57
+-- Время создания: Авг 08 2019 г., 22:58
 -- Версия сервера: 10.3.13-MariaDB
 -- Версия PHP: 7.1.22
 
@@ -152,6 +152,29 @@ CREATE TABLE `menu` (
   `title` varchar(255) NOT NULL,
   `href` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mod_advanced_menu`
+--
+
+CREATE TABLE `mod_advanced_menu` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `href` varchar(512) NOT NULL,
+  `parent` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `mod_advanced_menu`
+--
+
+INSERT INTO `mod_advanced_menu` (`id`, `title`, `href`, `parent`) VALUES
+(1, 'Заголовок1', 'href', NULL),
+(2, 'Заголовок2', 'href', NULL),
+(3, 'Заголовок 1-2', 'href', '1'),
+(4, 'Заголовок 1-3', 'href', '3');
 
 -- --------------------------------------------------------
 
@@ -328,6 +351,12 @@ ALTER TABLE `menu`
   ADD UNIQUE KEY `title` (`title`);
 
 --
+-- Индексы таблицы `mod_advanced_menu`
+--
+ALTER TABLE `mod_advanced_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `pages`
 --
 ALTER TABLE `pages`
@@ -401,6 +430,12 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `mod_advanced_menu`
+--
+ALTER TABLE `mod_advanced_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `pages`
