@@ -30,7 +30,9 @@
                 }
             }
             echo json_encode($response);
+            
         }else if($_POST['key'] == "C-D"){
+            
             $data = $_POST['data'];
             if(strlen($data) == 0){
                 echo "Введіть назву папки";
@@ -38,7 +40,9 @@
                 mkdir($_SERVER['DOCUMENT_ROOT'] . "/content/".$data);
                 echo "Папку успішно створено";
             }
+            
         }else if($_POST['key'] == "D-F"){
+            
             $data = $_POST['data'];
             if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/content/".$data)){
                 chmod($_SERVER['DOCUMENT_ROOT'] . "/content/".$data, 0755);
@@ -48,6 +52,7 @@
                 echo "Файл не знайдено";
             }
         }else if($_POST['key'] == "G-D"){
+            
             $data = $_POST['data'];
             $file_list = scandir($_SERVER['DOCUMENT_ROOT'] . "/content/".$data);
         
@@ -61,6 +66,24 @@
               $item_list = $item_list.$file.";";
             }
             echo $item_list."╬".$data;
+            
+        }else if($_POST['key'] == "L"){
+            
+            $path = $_SERVER['DOCUMENT_ROOT']."/".$_POST['data'];
+            if(file_exists($path) AND !is_dir($path)){
+                echo file_get_contents($path);
+            }else{
+                echo false;
+            }
+            
+        }else if($_POST['key'] == "RW"){
+            $data = explode("╬",$_POST['data']);
+            if(file_exists($_SERVER['DOCUMENT_ROOT']."/".$data[0])){
+                file_put_contents($_SERVER['DOCUMENT_ROOT']."/".$data[0], $data[1]);
+                echo "Файл збережено";
+            }else{
+                echo "Файл не знайдено";
+            }
         }
     }
     
