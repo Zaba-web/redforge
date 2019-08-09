@@ -161,4 +161,16 @@ $(document).ready(function(){
         fileQuery("G-D",$(this).data("path"),"get",fileListInDir);
     });
     
+    $("#editor-mode").change(function(){
+        editor.session.setMode($(this).val());
+    });
+    
+    $("#editor-path-input").change(function(){
+        fileQuery("L",$(this).val(),"get",loadEditorInfo);
+    });
+    
+    $(".editor-file-update").click(function(){
+        fileQuery("RW",$("#editor-path-input").val()+"╬"+editor.getValue(),"set");
+    });
+    
 });

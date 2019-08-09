@@ -206,3 +206,12 @@ function fileListInDir(data){
 
     showModal(res);
 }
+
+function loadEditorInfo(code){
+    if(!code){
+        notify("Файл не знайдено");
+        editor.setValue("");
+    }else{
+        editor.setValue(code);
+    }
+}

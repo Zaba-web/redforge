@@ -586,7 +586,12 @@ select.invise{
 .file-item-mini:last-child{
     border:0;
 }
-
+#editor-block{
+    height:75vh;
+}
+    .inner-d{
+        margin-left:20px;
+    }
 
 
 
