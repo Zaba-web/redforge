@@ -141,7 +141,6 @@ function notify(text){
 }
 
 function findRes(data){
-    
     data_parsed = data.split(";");
     data_parsed.splice(-1,1);
     if(data_parsed.length > 0){
