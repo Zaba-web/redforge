@@ -56,6 +56,10 @@
 
         }
         
+        public function get_instance(){
+            return $this->db;
+        }
+        
     }
     
 

@@ -1,5 +1,81 @@
 <?php
+    
+    Class FormDserializer{
+        
+        static function Deserialize($data) {
 
+        $data_couple = explode("&", $data);
+
+        $data_parsed = array();
+
+        foreach ($data_couple as $data_item) {
+
+            $data_item_parsed = explode("=", $data_item);
+            if (count($data_item_parsed) == 2) {
+                $data_parsed[$data_item_parsed[0]] = $data_item_parsed[1]; // for common text
+            } else { // if array item contains '=' mark
+                $data_key = $data_item_parsed[0];
+                unset($data_item_parsed[0]);
+                $data_value = implode("=", $data_item_parsed);
+                $data_parsed[$data_key] = $data_value;
+            }
+        }
+
+        return $data_parsed;
+        }
+
+    }
+
+    Class DataHandler{
+
+        static public function CheckFilling($array){
+            $status = true;
+            $empty = 0;
+            foreach ($array as $value){
+                if(strlen($value) == 0){
+                    $empty++;
+                }
+            }
+            if($empty >= count($array)){
+                $status = false;
+            }
+            return $status;
+        }
+        
+        static public function GetArrayKeys($array){
+            $keys = array_keys($array);
+            return implode(",", $keys);
+        }
+        
+        static public function GetArrayValuesToInsert($array, $db){
+            foreach($array as $key => $value){
+                $array[$key] = $db->real_escape_string($array[$key]);
+                $array[$key] = "'".$array[$key]."'";
+            }
+            return implode(",", $array);
+        }
+        
+        static public function GetArrayValuesToUpdate($array,$db){
+            $response;
+            foreach ($array as $key=>$value){
+                $value = $db->real_escape_string($value);
+                $response = $response.",".$key."='".$value."'";
+            }
+            return ltrim($response,",");
+        }
+        
+        static public function Code($row){
+            $response;
+            foreach ($row as $key => $value){
+                if($value == ""){$row[$key] = "-";}
+                $response = $response.$key."≈".$value."╬";
+            }
+        
+            return $response;
+        }
+        
+    }
+    
     function load_partition($selected, $error, $pathes){
         
         if($error){
@@ -14,73 +90,7 @@
         
         return $result;
         
-    }
-    
-   function decode($data){
-        
-        $data_couple = explode("&", $data);
-        
-        $data_parsed = array();
-        
-        foreach($data_couple as $data_item){
-            
-            $data_item_parsed = explode("=",$data_item);
-            if(count($data_item_parsed) == 2){
-                $data_parsed[$data_item_parsed[0]] = $data_item_parsed[1]; // for common text
-            }else{ // if array item contains '=' mark
-                $data_key = $data_item_parsed[0];
-                unset ($data_item_parsed[0]);
-                $data_value = implode("=", $data_item_parsed);
-                $data_parsed[$data_key] = $data_value;
-            }
-            
-        }
-        
-        return $data_parsed;
-        
-    }
-    
-    function code($row){
-        
-        $response;
-        foreach ($row as $key => $value){
-                
-                if($value == ""){$row[$key] = "-";}
-                
-                $response = $response.$key."≈".$value."╬";
-                
-        }
-        
-        return $response;
-        
-    }
-    
-    function get_array_keys($array){
-        $keys = array_keys($array);
-        return implode(",", $keys);
-    }
-    
-    function check_filling($array){
-        $status = true;
-        $empty = 0;
-        foreach ($array as $value){
-            if(strlen($value) == 0){
-                $empty++;
-            }
-        }
-        if($empty >= count($array)){
-            $status = false;
-        }
-        return $status;
-    }
-    
-    function get_array_values_to_insert($array, $db){
-        foreach($array as $key => $value){
-            $array[$key] = $db->real_escape_string($array[$key]);
-            $array[$key] = "'".$array[$key]."'";
-        }
-        return implode(",", $array);
-    }
+    }  
     
     function get_array_values_to_update($array, $db){
         $response;
