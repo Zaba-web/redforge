@@ -13,8 +13,6 @@
             $classname = $key."_Performer";
             if(class_exists($classname)){
                 return new $classname;
-            }else{
-                return "Не вдалося виконати запит: звернення до невідомого класу";
             }
         }
         
