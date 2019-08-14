@@ -22,9 +22,17 @@
         
         $performer = Performer::getPerformer($key);
         
-        $performer->init($query_builder,$pathes,$data,$content,$table);
-        $response = $performer->execute();
+        if($performer instanceof Performer){
+            
+            $performer->init($query_builder,$pathes,$data,$content,$table);
+           $response = $performer->execute();
+
+           echo $response;
+            
+        }else{
+            echo "Не вдалося виконати запит: звернення до невідомого класу";
+        }
         
-        echo $response;
+
 
     }
