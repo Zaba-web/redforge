@@ -43,3 +43,5 @@
             echo $dates."-".$views."-".$visits;
         }
     }
+    
+    $main_parser->unloadData();
