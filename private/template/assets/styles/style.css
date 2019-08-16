@@ -24,6 +24,7 @@ h1{color:#fff;font-size:21px;font-weight:400;font-family:Roboto Light;}
     box-shadow: 3px 0px 5px 0px rgba(50, 50, 50, 0.41);
     box-sizing: border-box;
     position:relative;
+    padding-bottom: 20px;
 }
 .menu-trigger{
     position:absolute;
@@ -589,10 +590,26 @@ select.invise{
 #editor-block{
     height:75vh;
 }
-    .inner-d{
-        margin-left:20px;
-    }
-
+table{
+    border-spacing:initial;
+    border-collapse:separate;
+    box-shadow:         1px 1px 11px 0px rgba(50, 50, 50, 0.2);
+}
+td,th{
+    padding:15px;
+    box-sizing: border-box;
+    font-family:Roboto Light;
+}
+th{
+    background:#E86174;
+    color:#fff;
+    font-weight:500;
+}
+.table-container{
+    max-width:100%;
+    overflow: auto;
+    padding-bottom:43px;
+}
 
 
 
@@ -627,6 +644,9 @@ select.invise{
     }
     .header-search-container{
         width:40%;
+    }
+    .big-width-content{
+        flex-direction: column;
     }
 }
 @media(max-width:1280px){
