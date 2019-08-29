@@ -34,6 +34,12 @@
                     <input type="text" name="description" id="description" placeholder=" ">
                     <label for="description">Опис категорії</label>
                 </div>
+               <div class="form-element-wrapper">
+                    <select name="parent">
+                        <option disabled selected>Батьківська категорія</option>
+                        <?php get_item_list($db->query("SELECT * FROM categories"),"private/template/layouts/category_select_list.html",true) ?>
+                    </select>
+                </div>
                 
                 <br><br>
                 

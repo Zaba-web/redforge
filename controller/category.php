@@ -4,7 +4,7 @@
     
     if ($category_name == null){
         
-        $category_list = $db->query("SELECT * FROM categories");
+        $category_list = $db->query("SELECT * FROM categories WHERE ISNULL(parent)");
         require_once $pathes->server_path."template/composition/categories_page.html";
         
         
@@ -18,7 +18,8 @@
             $id = $category_info_fetched["id"];
             $title = $category_info_fetched["title"];
 
-            $post_list = $db->query("SELECT * FROM posts WHERE parent = $id");
+            $post_list = $db->query("SELECT * FROM posts WHERE parent = '$category_name'");
+            $children_category_list = $db->query("SELECT * FROM categories WHERE parent = '$category_name'");
 
             require_once $pathes->server_path."template/composition/posts_page.html";
             
