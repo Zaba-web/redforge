@@ -129,12 +129,6 @@
 		}
 		
 	}
-	/*
-$ex = new Grabber("mkkp.tk.te.ua","m1n2b3v4");
-$main_parser = new MainParser();
-
-$data = $ex->getData("index.tsv?graph=tsv");
-$chart = $main_parser->parseChart($data);*/
 
 
 
